@@ -180,56 +180,50 @@ meu lugar no mundo é onde Alam está. 🌹
   </footer>
 
   <!-- Música -->
-<audio id="musica" src="música.mp3" type="audio/mp3"></audio>
-
-<!-- Botão para tocar música -->
-<button onclick="tocarMusica()">🎵 Tocar Música</button>
+<audio id="musica" src="musica.mp3" type="audio/mp3"></audio>
 
 <script>
+  // Tocar música
   function tocarMusica() {
     const musica = document.getElementById("musica");
     musica.play();
   }
+
+  // Contador
+  const inicioRelacao = new Date("2024-01-18T00:00:00");
+  const contador = document.getElementById("contador");
+
+  function atualizarContador() {
+    const agora = new Date();
+    const diff = agora - inicioRelacao;
+
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diff / (1000 * 60)) % 60);
+    const segundos = Math.floor((diff / 1000) % 60);
+
+    contador.textContent = `EU TE AMO HÁ: ${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
+  }
+
+  setInterval(atualizarContador, 1000);
+  atualizarContador();
+
+  // Corações caindo
+  const heartsContainer = document.getElementById("hearts-container");
+  function criarCoracao() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 30 + "px";
+    heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 10000);
+  }
+
+  setInterval(criarCoracao, 300);
 </script>
-    }
 
-    // Contador
-    const inicioRelacao = new Date("2024-01-18T00:00:00");
-    const contador = document.getElementById("contador");
-
-    function atualizarContador() {
-      const agora = new Date();
-      const diff = agora - inicioRelacao;
-
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((diff / (1000 * 60)) % 60);
-      const segundos = Math.floor((diff / 1000) % 60);
-
-      contador.textContent = `EU TE AMO HÁ: ${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
-    }
-
-    setInterval(atualizarContador, 1000);
-    atualizarContador();
-
-    // Corações caindo
-    const heartsContainer = document.getElementById("hearts-container");
-    function criarCoracao() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.textContent = "🤍";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 30 + "px";
-      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
-      heartsContainer.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 10000);
-    }
-
-    setInterval(criarCoracao, 300);
-  </script>
-
-</body>
-</html>
