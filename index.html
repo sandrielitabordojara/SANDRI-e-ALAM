@@ -8,88 +8,115 @@
     body {
       margin: 0;
       font-family: 'Times New Roman', serif;
-      background-color: #2c0b0e; /* vermelho vinho escuro */
-      color: #fff;
-      overflow-x: hidden;
+      background-color: #4b0000; /* vermelho vinho escuro */
+      color: white;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 30px 20px 10px;
     }
 
     h1 {
       font-size: 2.5em;
-      color: #ffccd5;
-      margin: 40px 0 10px;
+      margin-bottom: 10px;
     }
 
-    .music-btn {
-      background-color: #fff;
-      color: #4b0e1e;
-      padding: 10px 20px;
-      font-size: 1.1em;
+    .play-button {
+      background-color: white;
+      color: #4b0000;
       border: none;
-      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 10px;
       cursor: pointer;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .slideshow-container {
+    .slider-container {
       position: relative;
-      width: 350px;
-      height: 350px;
-      margin: 0 auto 40px;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    .slideshow-container img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .slideshow-container img.active {
-      opacity: 1;
-    }
-
-    .love-msg {
-      font-size: 1.3em;
-      color: #ffdee2;
-      max-width: 700px;
+      width: 320px;
+      height: 320px;
       margin: 0 auto 30px;
-      line-height: 1.8;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .slider {
+      display: flex;
+      width: calc(320px * 9);
+      animation: slide 18s infinite ease-in-out;
+    }
+
+    .slider img {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    @keyframes slide {
+      0%, 11% { transform: translateX(0); }
+      12%, 22% { transform: translateX(-320px); }
+      23%, 33% { transform: translateX(-640px); }
+      34%, 44% { transform: translateX(-960px); }
+      45%, 55% { transform: translateX(-1280px); }
+      56%, 66% { transform: translateX(-1600px); }
+      67%, 77% { transform: translateX(-1920px); }
+      78%, 88% { transform: translateX(-2240px); }
+      89%, 100% { transform: translateX(-2560px); }
     }
 
     .timer-box {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #fff;
-      color: #4b0e1e;
-      font-weight: bold;
-      font-size: 1.2em;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px 20px;
       border-radius: 10px;
-      margin-bottom: 40px;
+      display: inline-block;
+      font-size: 1.2em;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .love-msg {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      white-space: pre-line;
     }
 
     footer {
       padding: 20px;
       font-size: 1em;
-      color: #ddd;
+      color: #ccc;
+    }
+
+    /* Corações */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
     }
 
     .heart {
-      position: fixed;
-      top: -50px;
-      animation: fall 7s linear infinite;
-      user-select: none;
-      pointer-events: none;
+      position: absolute;
+      font-size: 30px;
+      animation: fall 8s linear infinite;
+      color: white;
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(110vh);
+      0% {
+        transform: translateY(-10%) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
         opacity: 0;
       }
     }
@@ -97,77 +124,71 @@
 </head>
 <body>
 
-  <!-- Corações caindo -->
-  <script>
-    function criarCoracao() {
-      const coracao = document.createElement('div');
-      coracao.classList.add('heart');
-      coracao.textContent = '🤍';
-      coracao.style.left = Math.random() * 100 + 'vw';
-      coracao.style.fontSize = (32 + Math.random() * 24) + 'px';
-      document.body.appendChild(coracao);
+  <!-- Corações -->
+  <div class="hearts" id="hearts-container"></div>
 
-      setTimeout(() => {
-        coracao.remove();
-      }, 7000);
-    }
-    setInterval(criarCoracao, 300);
-  </script>
+  <header>
+    <h1>❤️ Para o Amor da Minha Vida ❤️</h1>
 
-  <!-- Título -->
-  <h1>❤️ Para o Amor da Minha Vida ❤️</h1>
+    <button class="play-button" onclick="tocarMusica()">🎵 Tocar Música</button>
 
-  <!-- Botão de Música -->
-  <button class="music-btn" onclick="tocarMusica()">▶️ Tocar Música</button>
-  <audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
+    <div class="slider-container">
+      <div class="slider">
+        <img src="amor1.jpeg" alt="Foto 1" />
+        <img src="amor2.jpeg" alt="Foto 2" />
+        <img src="amor3.jpeg" alt="Foto 3" />
+        <img src="amor4.jpeg" alt="Foto 4" />
+        <img src="amor5.jpeg" alt="Foto 5" />
+        <img src="amor6.jpeg" alt="Foto 6" />
+        <img src="amor7.jpeg" alt="Foto 7" />
+        <img src="amor8.jpeg" alt="Foto 8" />
+        <img src="amor9.jpeg" alt="Foto 9" />
+      </div>
+    </div>
+
+    <div class="timer-box" id="contador">
+      EU TE AMO HÁ: carregando...
+    </div>
+
+    <p class="love-msg">
+Tudo em Você — Para Alam 💖
+
+Tem algo em você que acalma,
+um riso que abraça, um olhar que tem alma.
+Nos seus gestos, encontro o meu lar,
+na sua presença, aprendo a amar.
+
+A gente se diverte com qualquer bobagem,
+vira história até da maior viagem.
+Nosso amor tem cor, tem luz, tem som,
+é carinho constante, é um laço bom.
+
+Você é meu abrigo, minha direção,
+minha paz no meio da confusão.
+Não é sobre perfeição, é sobre verdade,
+é sobre viver com leveza e cumplicidade.
+
+E se alguém me perguntar pra onde vou,
+eu digo sorrindo: com quem me encontrou.
+De todas as voltas que a vida dá,
+meu lugar no mundo é onde Alam está. 🌹
+    </p>
+  </header>
+
+  <footer>
+    Com todo o meu amor — Feliz Dia dos Namorados 💕
+  </footer>
+
+  <!-- Música -->
+  <audio id="musica" src="musica.mp3" type="audio/mpeg"></audio>
+
   <script>
     function tocarMusica() {
-      document.getElementById("musica").play();
+      const musica = document.getElementById("musica");
+      musica.play();
     }
-  </script>
 
-  <!-- Slideshow -->
-  <div class="slideshow-container">
-    <img src="amor1.jpeg" class="active" />
-    <img src="amor2.jpeg" />
-    <img src="amor3.jpeg" />
-    <img src="amor4.jpeg" />
-    <img src="amor5.jpeg" />
-    <img src="amor6.jpeg" />
-    <img src="amor7.jpeg" />
-    <img src="amor8.jpeg" />
-    <img src="amor9.jpeg" />
-  </div>
-
-  <!-- Poema -->
-  <p class="love-msg">
-    <strong>Tudo em Você — Para Alam 💖</strong><br /><br />
-    Tem algo em você que acalma,<br />
-    um riso que abraça, um olhar que tem alma.<br />
-    Nos seus gestos, encontro o meu lar,<br />
-    na sua presença, aprendo a amar.<br /><br />
-    A gente se diverte com qualquer bobagem,<br />
-    vira história até da maior viagem.<br />
-    Nosso amor tem cor, tem luz, tem som,<br />
-    é carinho constante, é um laço bom.<br /><br />
-    Você é meu abrigo, minha direção,<br />
-    minha paz no meio da confusão.<br />
-    Não é sobre perfeição, é sobre verdade,<br />
-    é sobre viver com leveza e cumplicidade.<br /><br />
-    E se alguém me perguntar pra onde vou,<br />
-    eu digo sorrindo: com quem me encontrou.<br />
-    De todas as voltas que a vida dá,<br />
-    meu lugar no mundo é onde Alam está. 🌹
-  </p>
-
-  <!-- Contador -->
-  <div class="timer-box" id="contador">
-    EU TE AMO HÁ: carregando...
-  </div>
-  <script>
+    // Contador
     const inicioRelacao = new Date("2024-01-18T00:00:00");
     const contador = document.getElementById("contador");
 
@@ -183,27 +204,27 @@
       contador.textContent = `EU TE AMO HÁ: ${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
     }
 
-    atualizarContador();
     setInterval(atualizarContador, 1000);
-  </script>
+    atualizarContador();
 
-  <footer>
-    Com todo o meu amor — Feliz Dia dos Namorados 💕
-  </footer>
+    // Corações caindo
+    const heartsContainer = document.getElementById("hearts-container");
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "🤍";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 30 + "px";
+      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+      heartsContainer.appendChild(heart);
 
-  <!-- Slideshow script -->
-  <script>
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".slideshow-container img");
-
-    function showSlides() {
-      slides.forEach((slide) => slide.classList.remove("active"));
-      slides[slideIndex].classList.add("active");
-      slideIndex = (slideIndex + 1) % slides.length;
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
     }
 
-    setInterval(showSlides, 2500);
+    setInterval(criarCoracao, 300);
   </script>
+
 </body>
 </html>
-
