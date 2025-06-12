@@ -14,21 +14,28 @@
       text-align: center;
     }
 
-    header {
-      padding: 20px 20px 10px;
-    }
-
     h1 {
       font-size: 2.5em;
       color: #ffccd5;
-      margin: 20px 0 10px;
+      margin: 40px 0 10px;
+    }
+
+    .music-btn {
+      background-color: #fff;
+      color: #4b0e1e;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 30px;
     }
 
     .slideshow-container {
       position: relative;
-      width: 300px;
-      height: 300px;
-      margin: 0 auto 30px;
+      width: 350px;
+      height: 350px;
+      margin: 0 auto 40px;
       overflow: hidden;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -72,18 +79,6 @@
       color: #ddd;
     }
 
-    /* Botão para tocar música */
-    .music-btn {
-      background-color: #fff;
-      color: #4b0e1e;
-      padding: 10px 20px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-
     .heart {
       position: fixed;
       top: -50px;
@@ -109,18 +104,20 @@
       coracao.classList.add('heart');
       coracao.textContent = '🤍';
       coracao.style.left = Math.random() * 100 + 'vw';
-      coracao.style.fontSize = (32 + Math.random() * 24) + 'px'; // MAIOR AGORA
+      coracao.style.fontSize = (32 + Math.random() * 24) + 'px';
       document.body.appendChild(coracao);
 
       setTimeout(() => {
         coracao.remove();
       }, 7000);
     }
-
     setInterval(criarCoracao, 300);
   </script>
 
-  <!-- Botão para tocar música -->
+  <!-- Título -->
+  <h1>❤️ Para o Amor da Minha Vida ❤️</h1>
+
+  <!-- Botão de Música -->
   <button class="music-btn" onclick="tocarMusica()">▶️ Tocar Música</button>
   <audio id="musica" loop>
     <source src="musica.mp3" type="audio/mpeg">
@@ -132,7 +129,7 @@
     }
   </script>
 
-  <!-- Slideshow no topo -->
+  <!-- Slideshow -->
   <div class="slideshow-container">
     <img src="amor1.jpeg" class="active" />
     <img src="amor2.jpeg" />
@@ -145,42 +142,31 @@
     <img src="amor9.jpeg" />
   </div>
 
-  <header>
-    <h1>❤️ Para o Amor da Minha Vida ❤️</h1>
-    <p class="love-msg">
-      <strong>Tudo em Você — Para Alam 💖</strong><br /><br />
-
-      Tem algo em você que acalma,<br />
-      um riso que abraça, um olhar que tem alma.<br />
-      Nos seus gestos, encontro o meu lar,<br />
-      na sua presença, aprendo a amar.<br /><br />
-
-      A gente se diverte com qualquer bobagem,<br />
-      vira história até da maior viagem.<br />
-      Nosso amor tem cor, tem luz, tem som,<br />
-      é carinho constante, é um laço bom.<br /><br />
-
-      Você é meu abrigo, minha direção,<br />
-      minha paz no meio da confusão.<br />
-      Não é sobre perfeição, é sobre verdade,<br />
-      é sobre viver com leveza e cumplicidade.<br /><br />
-
-      E se alguém me perguntar pra onde vou,<br />
-      eu digo sorrindo: com quem me encontrou.<br />
-      De todas as voltas que a vida dá,<br />
-      meu lugar no mundo é onde Alam está. 🌹
-    </p>
-
-    <div class="timer-box" id="contador">
-      EU TE AMO HÁ: carregando...
-    </div>
-  </header>
-
-  <footer>
-    Com todo o meu amor — Feliz Dia dos Namorados 💕
-  </footer>
+  <!-- Poema -->
+  <p class="love-msg">
+    <strong>Tudo em Você — Para Alam 💖</strong><br /><br />
+    Tem algo em você que acalma,<br />
+    um riso que abraça, um olhar que tem alma.<br />
+    Nos seus gestos, encontro o meu lar,<br />
+    na sua presença, aprendo a amar.<br /><br />
+    A gente se diverte com qualquer bobagem,<br />
+    vira história até da maior viagem.<br />
+    Nosso amor tem cor, tem luz, tem som,<br />
+    é carinho constante, é um laço bom.<br /><br />
+    Você é meu abrigo, minha direção,<br />
+    minha paz no meio da confusão.<br />
+    Não é sobre perfeição, é sobre verdade,<br />
+    é sobre viver com leveza e cumplicidade.<br /><br />
+    E se alguém me perguntar pra onde vou,<br />
+    eu digo sorrindo: com quem me encontrou.<br />
+    De todas as voltas que a vida dá,<br />
+    meu lugar no mundo é onde Alam está. 🌹
+  </p>
 
   <!-- Contador -->
+  <div class="timer-box" id="contador">
+    EU TE AMO HÁ: carregando...
+  </div>
   <script>
     const inicioRelacao = new Date("2024-01-18T00:00:00");
     const contador = document.getElementById("contador");
@@ -201,23 +187,23 @@
     setInterval(atualizarContador, 1000);
   </script>
 
+  <footer>
+    Com todo o meu amor — Feliz Dia dos Namorados 💕
+  </footer>
+
   <!-- Slideshow script -->
   <script>
     let slideIndex = 0;
     const slides = document.querySelectorAll(".slideshow-container img");
 
     function showSlides() {
-      slides.forEach((slide, index) => {
-        slide.classList.remove("active");
-      });
-
+      slides.forEach((slide) => slide.classList.remove("active"));
       slides[slideIndex].classList.add("active");
       slideIndex = (slideIndex + 1) % slides.length;
     }
 
-    setInterval(showSlides, 2500); // muda a cada 2.5 segundos
+    setInterval(showSlides, 2500);
   </script>
-
 </body>
 </html>
 
