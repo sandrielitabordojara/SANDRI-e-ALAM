@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Times New Roman', serif;
-      background-color: #4b0e1e; /* Vinho escuro */
+      background-color: #2c0b0e; /* vermelho vinho escuro */
       color: #fff;
       overflow-x: hidden;
       text-align: center;
@@ -87,7 +87,6 @@
     .heart {
       position: fixed;
       top: -50px;
-      font-size: 20px;
       animation: fall 7s linear infinite;
       user-select: none;
       pointer-events: none;
@@ -110,7 +109,7 @@
       coracao.classList.add('heart');
       coracao.textContent = '🤍';
       coracao.style.left = Math.random() * 100 + 'vw';
-      coracao.style.fontSize = (16 + Math.random() * 16) + 'px';
+      coracao.style.fontSize = (32 + Math.random() * 24) + 'px'; // MAIOR AGORA
       document.body.appendChild(coracao);
 
       setTimeout(() => {
@@ -221,4 +220,5 @@
 
 </body>
 </html>
+
 
