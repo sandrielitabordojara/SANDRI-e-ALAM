@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Times New Roman', serif;
-      background-color: #3d0c13; /* vinho escuro */
+      background-color: #2c0b0e; /* vermelho vinho escuro */
       color: #fff;
       overflow-x: hidden;
       text-align: center;
@@ -17,7 +17,7 @@
     h1 {
       font-size: 2.5em;
       color: #ffccd5;
-      margin: 30px 0 10px;
+      margin: 40px 0 10px;
     }
 
     .music-btn {
@@ -28,17 +28,17 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .slideshow-container {
       position: relative;
-      width: 400px;
-      height: 400px;
-      margin: 0 auto 30px;
+      width: 350px;
+      height: 350px;
+      margin: 0 auto 40px;
       overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     .slideshow-container img {
@@ -60,18 +60,17 @@
       max-width: 700px;
       margin: 0 auto 30px;
       line-height: 1.8;
-      padding: 0 15px;
     }
 
     .timer-box {
       display: inline-block;
-      padding: 12px 25px;
+      padding: 10px 20px;
       background-color: #fff;
       color: #4b0e1e;
       font-weight: bold;
       font-size: 1.2em;
-      border-radius: 12px;
-      margin: 30px 0;
+      border-radius: 10px;
+      margin-bottom: 40px;
     }
 
     footer {
@@ -83,16 +82,15 @@
     .heart {
       position: fixed;
       top: -50px;
-      animation: fall 8s linear infinite;
+      animation: fall 7s linear infinite;
       user-select: none;
       pointer-events: none;
-      z-index: 0;
     }
 
     @keyframes fall {
       to {
         transform: translateY(110vh);
-        opacity: 0.2;
+        opacity: 0;
       }
     }
   </style>
@@ -106,21 +104,20 @@
       coracao.classList.add('heart');
       coracao.textContent = '🤍';
       coracao.style.left = Math.random() * 100 + 'vw';
-      coracao.style.fontSize = (36 + Math.random() * 30) + 'px';
-      coracao.style.animationDuration = (6 + Math.random() * 3) + 's';
+      coracao.style.fontSize = (32 + Math.random() * 24) + 'px';
       document.body.appendChild(coracao);
 
       setTimeout(() => {
         coracao.remove();
-      }, 9000);
+      }, 7000);
     }
-    setInterval(criarCoracao, 250);
+    setInterval(criarCoracao, 300);
   </script>
 
-  <!-- TÍTULO -->
+  <!-- Título -->
   <h1>❤️ Para o Amor da Minha Vida ❤️</h1>
 
-  <!-- BOTÃO MÚSICA -->
+  <!-- Botão de Música -->
   <button class="music-btn" onclick="tocarMusica()">▶️ Tocar Música</button>
   <audio id="musica" loop>
     <source src="musica.mp3" type="audio/mpeg">
@@ -132,7 +129,7 @@
     }
   </script>
 
-  <!-- SLIDESHOW -->
+  <!-- Slideshow -->
   <div class="slideshow-container">
     <img src="amor1.jpeg" class="active" />
     <img src="amor2.jpeg" />
@@ -145,7 +142,7 @@
     <img src="amor9.jpeg" />
   </div>
 
-  <!-- POEMA -->
+  <!-- Poema -->
   <p class="love-msg">
     <strong>Tudo em Você — Para Alam 💖</strong><br /><br />
     Tem algo em você que acalma,<br />
@@ -166,7 +163,7 @@
     meu lugar no mundo é onde Alam está. 🌹
   </p>
 
-  <!-- CONTADOR -->
+  <!-- Contador -->
   <div class="timer-box" id="contador">
     EU TE AMO HÁ: carregando...
   </div>
@@ -194,7 +191,7 @@
     Com todo o meu amor — Feliz Dia dos Namorados 💕
   </footer>
 
-  <!-- SLIDESHOW SCRIPT -->
+  <!-- Slideshow script -->
   <script>
     let slideIndex = 0;
     const slides = document.querySelectorAll(".slideshow-container img");
@@ -205,7 +202,7 @@
       slideIndex = (slideIndex + 1) % slides.length;
     }
 
-    setInterval(showSlides, 3000);
+    setInterval(showSlides, 2500);
   </script>
 </body>
 </html>
