@@ -42,22 +42,24 @@
     }
 
     .slider-container {
-      width: 260px;
-      height: 260px;
+      width: 250px;
+      height: 250px;
       margin: 30px auto;
       position: relative;
+      overflow: hidden;
+      border-radius: 15px;
     }
 
     .slider-container img {
-      width: 250px;
-      height: 250px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: 15px;
       position: absolute;
       top: 0;
       left: 0;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      border-radius: 15px;
     }
 
     .slider-container img.active {
@@ -83,10 +85,10 @@
 
     .heart-emoji {
       position: fixed;
-      font-size: 24px;
       animation: floatUp 6s linear infinite;
-      opacity: 0.7;
+      opacity: 0.6;
       z-index: 0;
+      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -114,7 +116,7 @@
 
   <!-- Música -->
   <audio id="musica">
-    <source src="musica.mpeg" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
@@ -133,20 +135,26 @@
     }
 
     // Corações flutuando
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement("div");
-      heart.classList.add("heart-emoji");
-      heart.textContent = "🤍";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
-      heart.style.fontSize = 20 + Math.random() * 20 + "px";
-      document.body.appendChild(heart);
+    function criarCoracoes() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart-emoji");
+        heart.textContent = "🤍";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+        heart.style.fontSize = 18 + Math.random() * 20 + "px";
+        heart.style.top = "100vh";
+        document.body.appendChild(heart);
+      }
     }
 
+    criarCoracoes();
+
     // Slider de imagens
-    let current = 0;
     window.onload = function () {
       const slides = document.querySelectorAll(".slider-container img");
+      let current = 0;
+
       setInterval(() => {
         slides[current].classList.remove("active");
         current = (current + 1) % slides.length;
@@ -178,17 +186,14 @@
       um riso que abraça, um olhar que tem alma.<br />
       Nos seus gestos, encontro o meu lar,<br />
       na sua presença, aprendo a amar.<br /><br />
-      
       A gente se diverte com qualquer bobagem,<br />
       vira história até da maior viagem.<br />
       Nosso amor tem cor, tem luz, tem som,<br />
       é carinho constante, é um laço bom.<br /><br />
-      
       Você é meu abrigo, minha direção,<br />
       minha paz no meio da confusão.<br />
       Não é sobre perfeição, é sobre verdade,<br />
       é sobre viver com leveza e cumplicidade.<br /><br />
-      
       E se alguém me perguntar pra onde vou,<br />
       eu digo sorrindo: com quem me encontrou.<br />
       De todas as voltas que a vida dá,<br />
@@ -226,4 +231,5 @@
 
 </body>
 </html>
+
 
