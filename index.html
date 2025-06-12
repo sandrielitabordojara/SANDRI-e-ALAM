@@ -2,94 +2,96 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Para Nós Dois 💖</title>
   <style>
     body {
       margin: 0;
       font-family: 'Times New Roman', serif;
-      background-color: #2c0b0e; /* vermelho vinho escuro */
+      background-color: #4b0000; /* vermelho vinho escuro */
       color: #fff;
-      overflow-x: hidden;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 20px 20px 0;
     }
 
     h1 {
       font-size: 2.5em;
-      color: #ffccd5;
-      margin: 40px 0 10px;
+      color: #ffffff;
+      margin: 10px 0;
     }
 
-    .music-btn {
-      background-color: #fff;
-      color: #4b0e1e;
-      padding: 10px 20px;
-      font-size: 1.1em;
+    .play-button {
+      background: #880e4f;
+      color: white;
       border: none;
       border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1em;
       cursor: pointer;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .slideshow-container {
+    .slider-container {
       position: relative;
-      width: 350px;
-      height: 350px;
-      margin: 0 auto 40px;
+      width: 280px;
+      height: 370px;
+      margin: 20px auto;
+      border-radius: 20px;
       overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     }
 
-    .slideshow-container img {
-      position: absolute;
+    .slider-container img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      opacity: 0;
+      object-fit: contain;
+      border-radius: 20px;
       transition: opacity 1s ease-in-out;
-    }
-
-    .slideshow-container img.active {
-      opacity: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .love-msg {
-      font-size: 1.3em;
-      color: #ffdee2;
+      font-size: 1.2em;
       max-width: 700px;
-      margin: 0 auto 30px;
-      line-height: 1.8;
+      margin: 20px auto;
+      color: #ffebee;
+      line-height: 1.6em;
     }
 
     .timer-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid #ffcccb;
+      border-radius: 12px;
       display: inline-block;
       padding: 10px 20px;
-      background-color: #fff;
-      color: #4b0e1e;
-      font-weight: bold;
       font-size: 1.2em;
-      border-radius: 10px;
-      margin-bottom: 40px;
+      margin-top: 20px;
+      color: #fff;
     }
 
     footer {
       padding: 20px;
       font-size: 1em;
-      color: #ddd;
+      color: #ccc;
     }
 
     .heart {
       position: fixed;
+      font-size: 32px;
+      animation: fall 5s linear infinite;
+      color: white;
       top: -50px;
-      animation: fall 7s linear infinite;
-      user-select: none;
-      pointer-events: none;
     }
 
     @keyframes fall {
       to {
-        transform: translateY(110vh);
+        transform: translateY(100vh);
         opacity: 0;
       }
     }
@@ -97,52 +99,26 @@
 </head>
 <body>
 
-  <!-- Corações caindo -->
-  <script>
-    function criarCoracao() {
-      const coracao = document.createElement('div');
-      coracao.classList.add('heart');
-      coracao.textContent = '🤍';
-      coracao.style.left = Math.random() * 100 + 'vw';
-      coracao.style.fontSize = (32 + Math.random() * 24) + 'px';
-      document.body.appendChild(coracao);
-
-      setTimeout(() => {
-        coracao.remove();
-      }, 7000);
-    }
-    setInterval(criarCoracao, 300);
-  </script>
-
-  <!-- Título -->
   <h1>❤️ Para o Amor da Minha Vida ❤️</h1>
 
-  <!-- Botão de Música -->
-  <button class="music-btn" onclick="tocarMusica()">▶️ Tocar Música</button>
-  <audio id="musica" loop>
+  <button class="play-button" onclick="tocarMusica()">🎵 Tocar Música</button>
+  <audio id="musica">
     <source src="musica.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
-  <script>
-    function tocarMusica() {
-      document.getElementById("musica").play();
-    }
-  </script>
 
-  <!-- Slideshow -->
-  <div class="slideshow-container">
-    <img src="amor1.jpeg" class="active" />
-    <img src="amor2.jpeg" />
-    <img src="amor3.jpeg" />
-    <img src="amor4.jpeg" />
-    <img src="amor5.jpeg" />
-    <img src="amor6.jpeg" />
-    <img src="amor7.jpeg" />
-    <img src="amor8.jpeg" />
-    <img src="amor9.jpeg" />
+  <div class="slider-container">
+    <img src="amor1.jpeg" class="slider-image" style="opacity: 1;" />
+    <img src="amor2.jpeg" class="slider-image" style="opacity: 0;" />
+    <img src="amor3.jpeg" class="slider-image" style="opacity: 0;" />
+    <img src="amor4.jpeg" class="slider-image" style="opacity: 0;" />
+    <img src="amor5.jpeg" class="slider-image" style="opacity: 0;" />
+    <img src="amor6.jpeg" class="slider-image" style="opacity: 0;" />
+    <img src="amor7.jpeg" class="slider-image" style="opacity: 0;" />
+    <img src="amor8.jpeg" class="slider-image" style="opacity: 0;" />
+    <img src="amor9.jpeg" class="slider-image" style="opacity: 0;" />
   </div>
 
-  <!-- Poema -->
   <p class="love-msg">
     <strong>Tudo em Você — Para Alam 💖</strong><br /><br />
     Tem algo em você que acalma,<br />
@@ -163,10 +139,14 @@
     meu lugar no mundo é onde Alam está. 🌹
   </p>
 
-  <!-- Contador -->
   <div class="timer-box" id="contador">
     EU TE AMO HÁ: carregando...
   </div>
+
+  <footer>
+    Com todo o meu amor — Feliz Dia dos Namorados 💕
+  </footer>
+
   <script>
     const inicioRelacao = new Date("2024-01-18T00:00:00");
     const contador = document.getElementById("contador");
@@ -174,35 +154,40 @@
     function atualizarContador() {
       const agora = new Date();
       const diff = agora - inicioRelacao;
-
       const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutos = Math.floor((diff / (1000 * 60)) % 60);
       const segundos = Math.floor((diff / 1000) % 60);
-
       contador.textContent = `EU TE AMO HÁ: ${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
     }
 
-    atualizarContador();
     setInterval(atualizarContador, 1000);
-  </script>
+    atualizarContador();
 
-  <footer>
-    Com todo o meu amor — Feliz Dia dos Namorados 💕
-  </footer>
-
-  <!-- Slideshow script -->
-  <script>
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".slideshow-container img");
-
-    function showSlides() {
-      slides.forEach((slide) => slide.classList.remove("active"));
-      slides[slideIndex].classList.add("active");
-      slideIndex = (slideIndex + 1) % slides.length;
+    function tocarMusica() {
+      document.getElementById("musica").play();
     }
 
-    setInterval(showSlides, 2500);
+    // Slider automático
+    let slideAtual = 0;
+    const imagens = document.querySelectorAll(".slider-image");
+    setInterval(() => {
+      imagens[slideAtual].style.opacity = 0;
+      slideAtual = (slideAtual + 1) % imagens.length;
+      imagens[slideAtual].style.opacity = 1;
+    }, 3000);
+
+    // Corações caindo 🤍
+    function criarCoracao() {
+      const coracao = document.createElement("div");
+      coracao.classList.add("heart");
+      coracao.style.left = Math.random() * 100 + "vw";
+      coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      coracao.textContent = "🤍";
+      document.body.appendChild(coracao);
+      setTimeout(() => coracao.remove(), 5000);
+    }
+    setInterval(criarCoracao, 300);
   </script>
 </body>
 </html>
