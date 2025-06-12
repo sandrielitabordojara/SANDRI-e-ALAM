@@ -41,38 +41,30 @@
       margin-top: 20px;
     }
 
-    .carousel-container {
-      width: 100%;
-      overflow: hidden;
-      margin-top: 20px;
+    .slider-container {
+      width: 260px;
+      height: 260px;
+      margin: 30px auto;
+      position: relative;
     }
 
-    .carousel {
-      display: flex;
-      width: calc(250px * 9);
-      animation: scroll 25s linear infinite;
-    }
-
-    .carousel img {
+    .slider-container img {
       width: 250px;
-      height: auto;
-      border-radius: 12px;
-      margin: 0 5px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .slider-container img.active {
+      opacity: 1;
+      z-index: 1;
     }
 
-    footer {
-      padding: 20px;
-      font-size: 1em;
-      color: #ffcdd2;
-    }
-
-    /* Botão de música */
     #playPauseBtn {
       background-color: #fff;
       color: #b71c1c;
@@ -89,38 +81,40 @@
       background-color: #f8bbd0;
     }
 
-    /* Corações flutuantes */
-    .heart {
+    .heart-emoji {
       position: fixed;
-      width: 20px;
-      height: 20px;
-      background-color: white;
-      clip-path: polygon(
-        50% 0%, 61% 10%, 70% 20%, 80% 35%, 85% 50%, 
-        80% 65%, 70% 80%, 50% 100%, 30% 80%, 20% 65%, 
-        15% 50%, 20% 35%, 30% 20%, 39% 10%
-      );
-      animation: float 6s infinite ease-in;
-      opacity: 0.8;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
     }
 
-    @keyframes float {
+    @keyframes floatUp {
       0% {
-        transform: translateY(100vh) scale(0.5);
+        transform: translateY(100vh) scale(0.8);
         opacity: 0;
+      }
+      50% {
+        opacity: 1;
       }
       100% {
         transform: translateY(-10vh) scale(1.2);
-        opacity: 1;
+        opacity: 0;
       }
+    }
+
+    footer {
+      padding: 20px;
+      font-size: 1em;
+      color: #ffcdd2;
     }
   </style>
 </head>
 <body>
 
-  <!-- Música de fundo controlada por botão -->
+  <!-- Música -->
   <audio id="musica">
-    <source src="musica.mp3" type="audio/mpeg">
+    <source src="musica.mpeg" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
@@ -138,15 +132,27 @@
       }
     }
 
-    // Corações brancos
+    // Corações flutuando
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement("div");
-      heart.classList.add("heart");
+      heart.classList.add("heart-emoji");
+      heart.textContent = "🤍";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
-      heart.style.opacity = Math.random();
+      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+      heart.style.fontSize = 20 + Math.random() * 20 + "px";
       document.body.appendChild(heart);
     }
+
+    // Slider de imagens
+    let current = 0;
+    window.onload = function () {
+      const slides = document.querySelectorAll(".slider-container img");
+      setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 3000);
+    };
   </script>
 
   <header>
@@ -154,18 +160,16 @@
 
     <button id="playPauseBtn" onclick="tocarOuPausarMusica()">▶️ Tocar Música</button>
 
-    <div class="carousel-container">
-      <div class="carousel">
-        <img src="amor1.jpeg" alt="Foto 1" />
-        <img src="amor2.jpeg" alt="Foto 2" />
-        <img src="amor3.jpeg" alt="Foto 3" />
-        <img src="amor4.jpeg" alt="Foto 4" />
-        <img src="amor5.jpeg" alt="Foto 5" />
-        <img src="amor6.jpeg" alt="Foto 6" />
-        <img src="amor7.jpeg" alt="Foto 7" />
-        <img src="amor8.jpeg" alt="Foto 8" />
-        <img src="amor9.jpeg" alt="Foto 9" />
-      </div>
+    <div class="slider-container">
+      <img src="amor1.jpeg" class="active" />
+      <img src="amor2.jpeg" />
+      <img src="amor3.jpeg" />
+      <img src="amor4.jpeg" />
+      <img src="amor5.jpeg" />
+      <img src="amor6.jpeg" />
+      <img src="amor7.jpeg" />
+      <img src="amor8.jpeg" />
+      <img src="amor9.jpeg" />
     </div>
 
     <p class="love-msg">
@@ -184,6 +188,7 @@
       minha paz no meio da confusão.<br />
       Não é sobre perfeição, é sobre verdade,<br />
       é sobre viver com leveza e cumplicidade.<br /><br />
+      
       E se alguém me perguntar pra onde vou,<br />
       eu digo sorrindo: com quem me encontrou.<br />
       De todas as voltas que a vida dá,<br />
