@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Nós Dois 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fff0f5, #ffe6e6);
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      padding: 40px 20px 10px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #c2185b;
+      margin-bottom: 10px;
+    }
+
+    p.love-msg {
+      font-size: 1.3em;
+      color: #444;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .timer {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #880e4f;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 0 30px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 20px;
+      font-size: 1em;
+      color: #777;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Música romântica de fundo (opcional) -->
+  <audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <header>
+    <h1>❤️ Para o Amor da Minha Vida ❤️</h1>
+    <p class="love-msg">
+  <strong>Tudo em Você — Para Alam 💖</strong><br /><br />
+
+  Tem algo em você que acalma,<br />
+  um riso que abraça, um olhar que tem alma.<br />
+  Nos seus gestos, encontro o meu lar,<br />
+  na sua presença, aprendo a amar.<br /><br />
+
+  A gente se diverte com qualquer bobagem,<br />
+  vira história até da maior viagem.<br />
+  Nosso amor tem cor, tem luz, tem som,<br />
+  é carinho constante, é um laço bom.<br /><br />
+
+  Você é meu abrigo, minha direção,<br />
+  minha paz no meio da confusão.<br />
+  Não é sobre perfeição, é sobre verdade,<br />
+  é sobre viver com leveza e cumplicidade.<br /><br />
+
+  E se alguém me perguntar pra onde vou,<br />
+  eu digo sorrindo: com quem me encontrou.<br />
+  De todas as voltas que a vida dá,<br />
+  meu lugar no mundo é onde Alam está. 🌹
+</p>
+    </p>
+    <div class="timer" id="contador">
+      Juntos há: carregando...
+    </div>
+  </header>
+
+  <div class="gallery">
+    <img src="amor1.jpeg" alt="Foto 1" />
+    <img src="amor2.jpeg" alt="Foto 2" />
+    <img src="amor3.jpeg" alt="Foto 3" />
+    <img src="amor4.jpeg" alt="Foto 4" />
+    <img src="amor5.jpeg" alt="Foto 5" />
+    <img src="amor6.jpeg" alt="Foto 6" />
+    <img src="amor7.jpeg" alt="Foto 7" />
+    <img src="amor8.jpeg" alt="Foto 8" />
+    <img src="amor9.jpeg" alt="Foto 9" />
+    <img src="amor10.jpeg" alt="Foto 10" />
+  </div>
+
+  <footer>
+    Com todo o meu amor — Feliz Dia dos Namorados 💕
+  </footer>
+
+  <!-- Contador de tempo juntos -->
+  <script>
+    const inicioRelacao = new Date("2024-01-18T00:00:00"); // substitua com a data real!
+    const contador = document.getElementById("contador");
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - inicioRelacao;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      contador.textContent = `Juntos há: ${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
+  </script>
+
+</body>
+</html>
